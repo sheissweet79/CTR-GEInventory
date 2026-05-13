@@ -73,6 +73,11 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
 .asin-link:hover{text-decoration:underline}
 .num-cn{background:#fef3f2;color:#c2410c;font-weight:700}
 .num-kr{background:#f0fdf4;color:#15803d;font-weight:700}
+/* 병합 셀 효과 (전체 보기 시 CA/UK/DE 행의 상품/CN/KR 숨김) */
+td.inv-dup{border-top:none!important;border-bottom:none!important}
+td.inv-dup>*,td.inv-dup strong,td.inv-dup small,td.inv-dup a{visibility:hidden}
+#invBody.mkt-filtered td.inv-dup{border-top:1px solid var(--bd)!important;border-bottom:1px solid var(--bd)!important}
+#invBody.mkt-filtered td.inv-dup>*,#invBody.mkt-filtered td.inv-dup strong,#invBody.mkt-filtered td.inv-dup small,#invBody.mkt-filtered td.inv-dup a{visibility:visible}
 
 /* 리드타임 시각화 */
 .route-grid{display:flex;flex-direction:column;gap:10px}
@@ -133,7 +138,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
   <div class="slicer-group">
     <label>🌍 마켓</label>
     <span class="pill active" data-filter="market" data-val="ALL" onclick="toggleFilter(this)">전체</span>
-    <span class="pill" data-filter="market" data-val="US" onclick="toggleFilter(this)">🇺🇸 US</span><span class="pill" data-filter="market" data-val="CA" onclick="toggleFilter(this)">🇨🇦 CA</span><span class="pill" data-filter="market" data-val="UK" onclick="toggleFilter(this)">🇬🇧 UK</span><span class="pill" data-filter="market" data-val="DE" onclick="toggleFilter(this)">🇩🇪 DE</span>
+    <span class="pill" data-filter="market" data-val="US" onclick="toggleFilter(this)">US</span><span class="pill" data-filter="market" data-val="CA" onclick="toggleFilter(this)">CA</span><span class="pill" data-filter="market" data-val="UK" onclick="toggleFilter(this)">UK</span><span class="pill" data-filter="market" data-val="DE" onclick="toggleFilter(this)">DE</span>
   </div>
 </div>
 </div>
@@ -158,7 +163,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
 <div id="t1" class="tab-pane active">
 
   <div class="sec">📊 상품별 마켓별 재고 현황</div>
-  <div class="status-board"><div class="sb-header"><div class="sb-label">상품 \ 마켓</div><div class="sb-mkt">🇺🇸</div><div class="sb-mkt">🇨🇦</div><div class="sb-mkt">🇬🇧</div><div class="sb-mkt">🇩🇪</div></div><div class="sb-row" data-code="GE0001"><div class="sb-pname"><strong>GE0001</strong><br><small>Tire Repair Kit</small></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="US" data-code="GE0001"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">63일 잔여</div><div class="sb-due">Due: 2026-06-01</div></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="CA" data-code="GE0001"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">242일 잔여</div><div class="sb-due">Due: 2026-11-30</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="UK" data-code="GE0001"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">19일 잔여</div><div class="sb-due">Due: 2029-11-14</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="DE" data-code="GE0001"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2033-06-28</div></div></div><div class="sb-row" data-code="GE0002"><div class="sb-pname"><strong>GE0002</strong><br><small>Mechanics Mat</small></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="US" data-code="GE0002"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">99일 잔여</div><div class="sb-due">Due: 2027-06-13</div></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="CA" data-code="GE0002"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">71일 잔여</div><div class="sb-due">Due: 2031-06-05</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="UK" data-code="GE0002"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2031-11-12</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="DE" data-code="GE0002"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div></div><div class="sb-row" data-code="GE0003"><div class="sb-pname"><strong>GE0003</strong><br><small>Mirror Set</small></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="US" data-code="GE0003"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">19일 잔여</div><div class="sb-due">Due: 2026-06-08</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="CA" data-code="GE0003"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-08-18</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="UK" data-code="GE0003"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="DE" data-code="GE0003"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div></div><div class="sb-row" data-code="GE0004"><div class="sb-pname"><strong>GE0004</strong><br><small>Stool</small></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="US" data-code="GE0004"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">208일 잔여</div><div class="sb-due">Due: 2027-08-26</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="CA" data-code="GE0004"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="UK" data-code="GE0004"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="DE" data-code="GE0004"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div></div><div class="sb-row" data-code="GE0005"><div class="sb-pname"><strong>GE0005</strong><br><small>Mini Torch Light</small></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="US" data-code="GE0005"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-10-13</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="CA" data-code="GE0005"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-09-23</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="UK" data-code="GE0005"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="DE" data-code="GE0005"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2028-03-26</div></div></div><div class="sb-row" data-code="GE0006"><div class="sb-pname"><strong>GE0006</strong><br><small>Socket Organizer</small></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="US" data-code="GE0006"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-07-19</div></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="CA" data-code="GE0006"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">190일 잔여</div><div class="sb-due">Due: 2026-12-15</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="UK" data-code="GE0006"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="DE" data-code="GE0006"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div></div><div class="sb-row" data-code="GE0007"><div class="sb-pname"><strong>GE0007</strong><br><small>Hood Work Light</small></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="US" data-code="GE0007"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-03-28</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="CA" data-code="GE0007"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-03-23</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="UK" data-code="GE0007"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="DE" data-code="GE0007"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2029-09-22</div></div></div></div>
+  <div class="status-board"><div class="sb-header"><div class="sb-label">상품 \ 마켓</div><div class="sb-mkt">US</div><div class="sb-mkt">CA</div><div class="sb-mkt">UK</div><div class="sb-mkt">DE</div></div><div class="sb-row" data-code="GE0001"><div class="sb-pname"><strong>GE0001</strong><br><small>Tire Repair Kit</small></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="US" data-code="GE0001"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">63일 잔여</div><div class="sb-due">Due: 2026-06-02</div></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="CA" data-code="GE0001"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">242일 잔여</div><div class="sb-due">Due: 2026-12-01</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="UK" data-code="GE0001"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">19일 잔여</div><div class="sb-due">Due: 2029-11-15</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="DE" data-code="GE0001"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2033-06-29</div></div></div><div class="sb-row" data-code="GE0002"><div class="sb-pname"><strong>GE0002</strong><br><small>Mechanics Mat</small></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="US" data-code="GE0002"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">99일 잔여</div><div class="sb-due">Due: 2027-06-14</div></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="CA" data-code="GE0002"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">71일 잔여</div><div class="sb-due">Due: 2031-06-06</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="UK" data-code="GE0002"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2031-11-13</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="DE" data-code="GE0002"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div></div><div class="sb-row" data-code="GE0003"><div class="sb-pname"><strong>GE0003</strong><br><small>Mirror Set</small></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="US" data-code="GE0003"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">19일 잔여</div><div class="sb-due">Due: 2026-06-09</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="CA" data-code="GE0003"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-08-19</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="UK" data-code="GE0003"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="DE" data-code="GE0003"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div></div><div class="sb-row" data-code="GE0004"><div class="sb-pname"><strong>GE0004</strong><br><small>Stool</small></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="US" data-code="GE0004"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">208일 잔여</div><div class="sb-due">Due: 2027-08-27</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="CA" data-code="GE0004"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="UK" data-code="GE0004"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="DE" data-code="GE0004"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div></div><div class="sb-row" data-code="GE0005"><div class="sb-pname"><strong>GE0005</strong><br><small>Mini Torch Light</small></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="US" data-code="GE0005"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-10-14</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="CA" data-code="GE0005"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-09-24</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="UK" data-code="GE0005"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="DE" data-code="GE0005"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2028-03-27</div></div></div><div class="sb-row" data-code="GE0006"><div class="sb-pname"><strong>GE0006</strong><br><small>Socket Organizer</small></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="US" data-code="GE0006"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-07-20</div></div><div class="sb-cell" style="background:#f0fdf4;border:1.5px solid #16a34a" data-market="CA" data-code="GE0006"><div class="sb-icon">🟢</div><div class="sb-val">안전</div><div class="sb-sub">190일 잔여</div><div class="sb-due">Due: 2026-12-16</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="UK" data-code="GE0006"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="DE" data-code="GE0006"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div></div><div class="sb-row" data-code="GE0007"><div class="sb-pname"><strong>GE0007</strong><br><small>Hood Work Light</small></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="US" data-code="GE0007"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-03-29</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="CA" data-code="GE0007"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2026-03-24</div></div><div class="sb-cell" style="background:#f8fafc;border:1.5px solid #94a3b8" data-market="UK" data-code="GE0007"><div class="sb-icon">⚪</div><div class="sb-val">해당 없음</div><div class="sb-sub">— 잔여</div><div class="sb-due">Due: —</div></div><div class="sb-cell" style="background:#fee2e2;border:1.5px solid #dc2626" data-market="DE" data-code="GE0007"><div class="sb-icon">🔴</div><div class="sb-val">긴급 발주</div><div class="sb-sub">0일 잔여</div><div class="sb-due">Due: 2029-09-23</div></div></div></div>
 
   <div class="sec">📋 재고 상세 (물류 흐름 순서)</div>
   <div class="card scroll">
@@ -183,82 +188,72 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
   <tbody id="invBody">
     
         <tr class="inv-row" data-code="GE0001">
-          <td rowspan="4" class="td-product">
-            <strong>GE0001</strong><br>
-            <small class="muted">Tire Repair Kit</small><br>
-            <a href="https://www.amazon.com/dp/B0BYYPD784" target="_blank" class="asin-link">B0BYYPD784</a>
-          </td>
-          <td rowspan="4" class="r td-stock num-cn">0</td>
-          <td rowspan="4" class="r td-stock num-kr">7,560</td>
-          <td rowspan="2" class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>80</strong></td>
-          <td class="td-mkt" data-market="US">🇺🇸<br><small>AWD 2,420 + FBA 2,448</small></td>
+          <td class="td-product"><strong>GE0001</strong><br><small class="muted">Tire Repair Kit</small><br><a href="https://www.amazon.com/dp/B0BYYPD784" target="_blank" class="asin-link">B0BYYPD784</a></td><td class="r td-stock num-cn">0</td><td class="r td-stock num-kr">7,560</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>80</strong></td>
+          <td class="td-mkt" data-market="US">US<br><small>AWD 2,420 + FBA 2,448</small></td>
           <td class="r td-stock" data-market="US">4,868</td>
           <td class="td-dos" data-market="US" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 63일</span><br><small>2,300/월</small></td>
           <td class="td-dos" data-market="US" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 65일</span><br><small>ACL포함 4,948</small></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-06-25</span></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-06-01</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-06-26</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-06-02</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0001">
-          <td class="td-mkt" data-market="CA">🇨🇦<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0001</strong><br><small class="muted">Tire Repair Kit</small><br><a href="https://www.amazon.com/dp/B0BYYPD784" target="_blank" class="asin-link">B0BYYPD784</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">7,560</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>80</strong></td>
+          <td class="td-mkt" data-market="CA">CA<br><small>FBA</small></td>
           <td class="r td-stock" data-market="CA">1,763</td>
           <td class="td-dos" data-market="CA" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 242일</span><br><small>219/월</small></td>
           <td class="td-dos" data-market="CA" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 252일</span><br><small>ACL포함 1,843</small></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-12-21</span></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-11-30</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-12-22</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-12-01</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0001">
-          <td rowspan="2" class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>5,500</strong></td>
-          <td class="td-mkt" data-market="UK">🇬🇧<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0001</strong><br><small class="muted">Tire Repair Kit</small><br><a href="https://www.amazon.com/dp/B0BYYPD784" target="_blank" class="asin-link">B0BYYPD784</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">7,560</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>5,500</strong></td>
+          <td class="td-mkt" data-market="UK">UK<br><small>FBA</small></td>
           <td class="r td-stock" data-market="UK">78</td>
           <td class="td-dos" data-market="UK" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 19일</span><br><small>125/월</small></td>
           <td class="td-dos" data-market="UK" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 1339일</span><br><small>ILS포함 5,578</small></td>
-          <td class="td-due" data-market="UK"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-05-16</span></td>
-          <td class="td-due" data-market="UK"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2029-11-14</span></td>
+          <td class="td-due" data-market="UK"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-05-17</span></td>
+          <td class="td-due" data-market="UK"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2029-11-15</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0001">
-          <td class="td-mkt" data-market="DE">🇩🇪<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0001</strong><br><small class="muted">Tire Repair Kit</small><br><a href="https://www.amazon.com/dp/B0BYYPD784" target="_blank" class="asin-link">B0BYYPD784</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">7,560</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>5,500</strong></td>
+          <td class="td-mkt" data-market="DE">DE<br><small>FBA</small></td>
           <td class="r td-stock" data-market="DE">0</td>
           <td class="td-dos" data-market="DE" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>62/월</small></td>
           <td class="td-dos" data-market="DE" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 2661일</span><br><small>ILS포함 5,500</small></td>
-          <td class="td-due" data-market="DE"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-27</span></td>
-          <td class="td-due" data-market="DE"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2033-06-28</span></td>
+          <td class="td-due" data-market="DE"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-28</span></td>
+          <td class="td-due" data-market="DE"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2033-06-29</span></td>
         </tr>
         <tr class="inv-sep"><td colspan="10"></td></tr>
         <tr class="inv-row" data-code="GE0002">
-          <td rowspan="4" class="td-product">
-            <strong>GE0002</strong><br>
-            <small class="muted">Mechanics Mat</small><br>
-            <a href="https://www.amazon.com/dp/B0D4681Q43" target="_blank" class="asin-link">B0D4681Q43</a>
-          </td>
-          <td rowspan="4" class="r td-stock num-cn">0</td>
-          <td rowspan="4" class="r td-stock num-kr">0</td>
-          <td rowspan="2" class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>1,646</strong></td>
-          <td class="td-mkt" data-market="US">🇺🇸<br><small>AWD 378 + FBA 99</small></td>
+          <td class="td-product"><strong>GE0002</strong><br><small class="muted">Mechanics Mat</small><br><a href="https://www.amazon.com/dp/B0D4681Q43" target="_blank" class="asin-link">B0D4681Q43</a></td><td class="r td-stock num-cn">0</td><td class="r td-stock num-kr">0</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>1,646</strong></td>
+          <td class="td-mkt" data-market="US">US<br><small>AWD 378 + FBA 99</small></td>
           <td class="r td-stock" data-market="US">477</td>
           <td class="td-dos" data-market="US" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 99일</span><br><small>144/월</small></td>
           <td class="td-dos" data-market="US" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 442일</span><br><small>ACL포함 2,123</small></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-07-31</span></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2027-06-13</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-08-01</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2027-06-14</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0002">
-          <td class="td-mkt" data-market="CA">🇨🇦<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0002</strong><br><small class="muted">Mechanics Mat</small><br><a href="https://www.amazon.com/dp/B0D4681Q43" target="_blank" class="asin-link">B0D4681Q43</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>1,646</strong></td>
+          <td class="td-mkt" data-market="CA">CA<br><small>FBA</small></td>
           <td class="r td-stock" data-market="CA">64</td>
           <td class="td-dos" data-market="CA" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 71일</span><br><small>27/월</small></td>
           <td class="td-dos" data-market="CA" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 1900일</span><br><small>ACL포함 1,710</small></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-07-03</span></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2031-06-05</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-07-04</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2031-06-06</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0002">
-          <td rowspan="2" class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>1,240</strong></td>
-          <td class="td-mkt" data-market="UK">🇬🇧<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0002</strong><br><small class="muted">Mechanics Mat</small><br><a href="https://www.amazon.com/dp/B0D4681Q43" target="_blank" class="asin-link">B0D4681Q43</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>1,240</strong></td>
+          <td class="td-mkt" data-market="UK">UK<br><small>FBA</small></td>
           <td class="r td-stock" data-market="UK">0</td>
           <td class="td-dos" data-market="UK" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>18/월</small></td>
           <td class="td-dos" data-market="UK" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 2067일</span><br><small>ILS포함 1,240</small></td>
-          <td class="td-due" data-market="UK"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-27</span></td>
-          <td class="td-due" data-market="UK"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2031-11-12</span></td>
+          <td class="td-due" data-market="UK"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-28</span></td>
+          <td class="td-due" data-market="UK"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2031-11-13</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0002">
-          <td class="td-mkt" data-market="DE">🇩🇪<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0002</strong><br><small class="muted">Mechanics Mat</small><br><a href="https://www.amazon.com/dp/B0D4681Q43" target="_blank" class="asin-link">B0D4681Q43</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>1,240</strong></td>
+          <td class="td-mkt" data-market="DE">DE<br><small>FBA</small></td>
           <td class="r td-stock" data-market="DE">0</td>
           <td class="td-dos" data-market="DE" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>0/월</small></td>
           <td class="td-dos" data-market="DE" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>ILS포함 1,240</small></td>
@@ -267,32 +262,26 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
         </tr>
         <tr class="inv-sep"><td colspan="10"></td></tr>
         <tr class="inv-row" data-code="GE0003">
-          <td rowspan="4" class="td-product">
-            <strong>GE0003</strong><br>
-            <small class="muted">Mirror Set</small><br>
-            <a href="https://www.amazon.com/dp/B0D7GKNC5Q" target="_blank" class="asin-link">B0D7GKNC5Q</a>
-          </td>
-          <td rowspan="4" class="r td-stock num-cn">2,592</td>
-          <td rowspan="4" class="r td-stock num-kr">0</td>
-          <td rowspan="2" class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>237</strong></td>
-          <td class="td-mkt" data-market="US">🇺🇸<br><small>AWD 0 + FBA 82</small></td>
+          <td class="td-product"><strong>GE0003</strong><br><small class="muted">Mirror Set</small><br><a href="https://www.amazon.com/dp/B0D7GKNC5Q" target="_blank" class="asin-link">B0D7GKNC5Q</a></td><td class="r td-stock num-cn">2,592</td><td class="r td-stock num-kr">0</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>237</strong></td>
+          <td class="td-mkt" data-market="US">US<br><small>AWD 0 + FBA 82</small></td>
           <td class="r td-stock" data-market="US">82</td>
           <td class="td-dos" data-market="US" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 19일</span><br><small>132/월</small></td>
           <td class="td-dos" data-market="US" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 72일</span><br><small>ACL포함 319</small></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-05-12</span></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-06-08</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-05-13</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-06-09</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0003">
-          <td class="td-mkt" data-market="CA">🇨🇦<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0003</strong><br><small class="muted">Mirror Set</small><br><a href="https://www.amazon.com/dp/B0D7GKNC5Q" target="_blank" class="asin-link">B0D7GKNC5Q</a></td><td class="r td-stock num-cn inv-dup">2,592</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>237</strong></td>
+          <td class="td-mkt" data-market="CA">CA<br><small>FBA</small></td>
           <td class="r td-stock" data-market="CA">0</td>
           <td class="td-dos" data-market="CA" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>48/월</small></td>
           <td class="td-dos" data-market="CA" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 148일</span><br><small>ACL포함 237</small></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-23</span></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-08-18</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-24</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-08-19</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0003">
-          <td rowspan="2" class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>0</strong></td>
-          <td class="td-mkt" data-market="UK">🇬🇧<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0003</strong><br><small class="muted">Mirror Set</small><br><a href="https://www.amazon.com/dp/B0D7GKNC5Q" target="_blank" class="asin-link">B0D7GKNC5Q</a></td><td class="r td-stock num-cn inv-dup">2,592</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>0</strong></td>
+          <td class="td-mkt" data-market="UK">UK<br><small>FBA</small></td>
           <td class="r td-stock" data-market="UK">0</td>
           <td class="td-dos" data-market="UK" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>0/월</small></td>
           <td class="td-dos" data-market="UK" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>ILS포함 0</small></td>
@@ -300,7 +289,8 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
           <td class="td-due" data-market="UK"><span style="color:#94a3b8">—</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0003">
-          <td class="td-mkt" data-market="DE">🇩🇪<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0003</strong><br><small class="muted">Mirror Set</small><br><a href="https://www.amazon.com/dp/B0D7GKNC5Q" target="_blank" class="asin-link">B0D7GKNC5Q</a></td><td class="r td-stock num-cn inv-dup">2,592</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>0</strong></td>
+          <td class="td-mkt" data-market="DE">DE<br><small>FBA</small></td>
           <td class="r td-stock" data-market="DE">0</td>
           <td class="td-dos" data-market="DE" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>0/월</small></td>
           <td class="td-dos" data-market="DE" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>ILS포함 0</small></td>
@@ -309,23 +299,17 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
         </tr>
         <tr class="inv-sep"><td colspan="10"></td></tr>
         <tr class="inv-row" data-code="GE0004">
-          <td rowspan="4" class="td-product">
-            <strong>GE0004</strong><br>
-            <small class="muted">Stool</small><br>
-            <a href="https://www.amazon.com/dp/B0D7GMH425" target="_blank" class="asin-link">B0D7GMH425</a>
-          </td>
-          <td rowspan="4" class="r td-stock num-cn">0</td>
-          <td rowspan="4" class="r td-stock num-kr">0</td>
-          <td rowspan="2" class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>689</strong></td>
-          <td class="td-mkt" data-market="US">🇺🇸<br><small>AWD 293 + FBA 171</small></td>
+          <td class="td-product"><strong>GE0004</strong><br><small class="muted">Stool</small><br><a href="https://www.amazon.com/dp/B0D7GMH425" target="_blank" class="asin-link">B0D7GMH425</a></td><td class="r td-stock num-cn">0</td><td class="r td-stock num-kr">0</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>689</strong></td>
+          <td class="td-mkt" data-market="US">US<br><small>AWD 293 + FBA 171</small></td>
           <td class="r td-stock" data-market="US">464</td>
           <td class="td-dos" data-market="US" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 208일</span><br><small>67/월</small></td>
           <td class="td-dos" data-market="US" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 516일</span><br><small>ACL포함 1,153</small></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-11-17</span></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2027-08-26</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-11-18</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2027-08-27</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0004">
-          <td class="td-mkt" data-market="CA">🇨🇦<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0004</strong><br><small class="muted">Stool</small><br><a href="https://www.amazon.com/dp/B0D7GMH425" target="_blank" class="asin-link">B0D7GMH425</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>689</strong></td>
+          <td class="td-mkt" data-market="CA">CA<br><small>FBA</small></td>
           <td class="r td-stock" data-market="CA">0</td>
           <td class="td-dos" data-market="CA" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>0/월</small></td>
           <td class="td-dos" data-market="CA" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>ACL포함 689</small></td>
@@ -333,8 +317,8 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
           <td class="td-due" data-market="CA"><span style="color:#94a3b8">—</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0004">
-          <td rowspan="2" class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>0</strong></td>
-          <td class="td-mkt" data-market="UK">🇬🇧<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0004</strong><br><small class="muted">Stool</small><br><a href="https://www.amazon.com/dp/B0D7GMH425" target="_blank" class="asin-link">B0D7GMH425</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>0</strong></td>
+          <td class="td-mkt" data-market="UK">UK<br><small>FBA</small></td>
           <td class="r td-stock" data-market="UK">0</td>
           <td class="td-dos" data-market="UK" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>0/월</small></td>
           <td class="td-dos" data-market="UK" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>ILS포함 0</small></td>
@@ -342,7 +326,8 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
           <td class="td-due" data-market="UK"><span style="color:#94a3b8">—</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0004">
-          <td class="td-mkt" data-market="DE">🇩🇪<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0004</strong><br><small class="muted">Stool</small><br><a href="https://www.amazon.com/dp/B0D7GMH425" target="_blank" class="asin-link">B0D7GMH425</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>0</strong></td>
+          <td class="td-mkt" data-market="DE">DE<br><small>FBA</small></td>
           <td class="r td-stock" data-market="DE">0</td>
           <td class="td-dos" data-market="DE" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>0/월</small></td>
           <td class="td-dos" data-market="DE" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>ILS포함 0</small></td>
@@ -351,32 +336,26 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
         </tr>
         <tr class="inv-sep"><td colspan="10"></td></tr>
         <tr class="inv-row" data-code="GE0005">
-          <td rowspan="4" class="td-product">
-            <strong>GE0005</strong><br>
-            <small class="muted">Mini Torch Light</small><br>
-            <a href="https://www.amazon.com/dp/B0DXPFQ3DD" target="_blank" class="asin-link">B0DXPFQ3DD</a>
-          </td>
-          <td rowspan="4" class="r td-stock num-cn">0</td>
-          <td rowspan="4" class="r td-stock num-kr">1,464</td>
-          <td rowspan="2" class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>768</strong></td>
-          <td class="td-mkt" data-market="US">🇺🇸<br><small>AWD 0 + FBA 0</small></td>
+          <td class="td-product"><strong>GE0005</strong><br><small class="muted">Mini Torch Light</small><br><a href="https://www.amazon.com/dp/B0DXPFQ3DD" target="_blank" class="asin-link">B0DXPFQ3DD</a></td><td class="r td-stock num-cn">0</td><td class="r td-stock num-kr">1,464</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>768</strong></td>
+          <td class="td-mkt" data-market="US">US<br><small>AWD 0 + FBA 0</small></td>
           <td class="r td-stock" data-market="US">0</td>
           <td class="td-dos" data-market="US" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>116/월</small></td>
           <td class="td-dos" data-market="US" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 199일</span><br><small>ACL포함 768</small></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-23</span></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-10-13</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-24</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-10-14</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0005">
-          <td class="td-mkt" data-market="CA">🇨🇦<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0005</strong><br><small class="muted">Mini Torch Light</small><br><a href="https://www.amazon.com/dp/B0DXPFQ3DD" target="_blank" class="asin-link">B0DXPFQ3DD</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">1,464</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>768</strong></td>
+          <td class="td-mkt" data-market="CA">CA<br><small>FBA</small></td>
           <td class="r td-stock" data-market="CA">0</td>
           <td class="td-dos" data-market="CA" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>125/월</small></td>
           <td class="td-dos" data-market="CA" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 184일</span><br><small>ACL포함 768</small></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-23</span></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-09-23</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-24</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-09-24</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0005">
-          <td rowspan="2" class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>2,000</strong></td>
-          <td class="td-mkt" data-market="UK">🇬🇧<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0005</strong><br><small class="muted">Mini Torch Light</small><br><a href="https://www.amazon.com/dp/B0DXPFQ3DD" target="_blank" class="asin-link">B0DXPFQ3DD</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">1,464</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>2,000</strong></td>
+          <td class="td-mkt" data-market="UK">UK<br><small>FBA</small></td>
           <td class="r td-stock" data-market="UK">0</td>
           <td class="td-dos" data-market="UK" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>0/월</small></td>
           <td class="td-dos" data-market="UK" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>ILS포함 2,000</small></td>
@@ -384,41 +363,36 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
           <td class="td-due" data-market="UK"><span style="color:#94a3b8">—</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0005">
-          <td class="td-mkt" data-market="DE">🇩🇪<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0005</strong><br><small class="muted">Mini Torch Light</small><br><a href="https://www.amazon.com/dp/B0DXPFQ3DD" target="_blank" class="asin-link">B0DXPFQ3DD</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">1,464</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>2,000</strong></td>
+          <td class="td-mkt" data-market="DE">DE<br><small>FBA</small></td>
           <td class="r td-stock" data-market="DE">0</td>
           <td class="td-dos" data-market="DE" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>81/월</small></td>
           <td class="td-dos" data-market="DE" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 741일</span><br><small>ILS포함 2,000</small></td>
-          <td class="td-due" data-market="DE"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-27</span></td>
-          <td class="td-due" data-market="DE"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2028-03-26</span></td>
+          <td class="td-due" data-market="DE"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-28</span></td>
+          <td class="td-due" data-market="DE"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2028-03-27</span></td>
         </tr>
         <tr class="inv-sep"><td colspan="10"></td></tr>
         <tr class="inv-row" data-code="GE0006">
-          <td rowspan="4" class="td-product">
-            <strong>GE0006</strong><br>
-            <small class="muted">Socket Organizer</small><br>
-            <a href="https://www.amazon.com/dp/B0DXTWRHHF" target="_blank" class="asin-link">B0DXTWRHHF</a>
-          </td>
-          <td rowspan="4" class="r td-stock num-cn">0</td>
-          <td rowspan="4" class="r td-stock num-kr">136</td>
-          <td rowspan="2" class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>192</strong></td>
-          <td class="td-mkt" data-market="US">🇺🇸<br><small>AWD 0 + FBA 0</small></td>
+          <td class="td-product"><strong>GE0006</strong><br><small class="muted">Socket Organizer</small><br><a href="https://www.amazon.com/dp/B0DXTWRHHF" target="_blank" class="asin-link">B0DXTWRHHF</a></td><td class="r td-stock num-cn">0</td><td class="r td-stock num-kr">136</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>192</strong></td>
+          <td class="td-mkt" data-market="US">US<br><small>AWD 0 + FBA 0</small></td>
           <td class="r td-stock" data-market="US">0</td>
           <td class="td-dos" data-market="US" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>51/월</small></td>
           <td class="td-dos" data-market="US" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 113일</span><br><small>ACL포함 192</small></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-23</span></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-07-19</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-24</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-07-20</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0006">
-          <td class="td-mkt" data-market="CA">🇨🇦<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0006</strong><br><small class="muted">Socket Organizer</small><br><a href="https://www.amazon.com/dp/B0DXTWRHHF" target="_blank" class="asin-link">B0DXTWRHHF</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">136</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>192</strong></td>
+          <td class="td-mkt" data-market="CA">CA<br><small>FBA</small></td>
           <td class="r td-stock" data-market="CA">476</td>
           <td class="td-dos" data-market="CA" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 190일</span><br><small>75/월</small></td>
           <td class="td-dos" data-market="CA" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 267일</span><br><small>ACL포함 668</small></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-10-30</span></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-12-15</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-10-31</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2026-12-16</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0006">
-          <td rowspan="2" class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>0</strong></td>
-          <td class="td-mkt" data-market="UK">🇬🇧<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0006</strong><br><small class="muted">Socket Organizer</small><br><a href="https://www.amazon.com/dp/B0DXTWRHHF" target="_blank" class="asin-link">B0DXTWRHHF</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">136</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>0</strong></td>
+          <td class="td-mkt" data-market="UK">UK<br><small>FBA</small></td>
           <td class="r td-stock" data-market="UK">0</td>
           <td class="td-dos" data-market="UK" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>0/월</small></td>
           <td class="td-dos" data-market="UK" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>ILS포함 0</small></td>
@@ -426,7 +400,8 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
           <td class="td-due" data-market="UK"><span style="color:#94a3b8">—</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0006">
-          <td class="td-mkt" data-market="DE">🇩🇪<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0006</strong><br><small class="muted">Socket Organizer</small><br><a href="https://www.amazon.com/dp/B0DXTWRHHF" target="_blank" class="asin-link">B0DXTWRHHF</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">136</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>0</strong></td>
+          <td class="td-mkt" data-market="DE">DE<br><small>FBA</small></td>
           <td class="r td-stock" data-market="DE">0</td>
           <td class="td-dos" data-market="DE" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>0/월</small></td>
           <td class="td-dos" data-market="DE" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>ILS포함 0</small></td>
@@ -435,32 +410,26 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
         </tr>
         <tr class="inv-sep"><td colspan="10"></td></tr>
         <tr class="inv-row" data-code="GE0007">
-          <td rowspan="4" class="td-product">
-            <strong>GE0007</strong><br>
-            <small class="muted">Hood Work Light</small><br>
-            <a href="https://www.amazon.com/dp/B0DXTS27G3" target="_blank" class="asin-link">B0DXTS27G3</a>
-          </td>
-          <td rowspan="4" class="r td-stock num-cn">0</td>
-          <td rowspan="4" class="r td-stock num-kr">0</td>
-          <td rowspan="2" class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>0</strong></td>
-          <td class="td-mkt" data-market="US">🇺🇸<br><small>AWD 0 + FBA 0</small></td>
+          <td class="td-product"><strong>GE0007</strong><br><small class="muted">Hood Work Light</small><br><a href="https://www.amazon.com/dp/B0DXTS27G3" target="_blank" class="asin-link">B0DXTS27G3</a></td><td class="r td-stock num-cn">0</td><td class="r td-stock num-kr">0</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>0</strong></td>
+          <td class="td-mkt" data-market="US">US<br><small>AWD 0 + FBA 0</small></td>
           <td class="r td-stock" data-market="US">0</td>
           <td class="td-dos" data-market="US" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>125/월</small></td>
           <td class="td-dos" data-market="US" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>ACL포함 0</small></td>
           <td class="td-due" data-market="US"><span style="color:#94a3b8">—</span></td>
-          <td class="td-due" data-market="US"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-03-28</span></td>
+          <td class="td-due" data-market="US"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-03-29</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0007">
-          <td class="td-mkt" data-market="CA">🇨🇦<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0007</strong><br><small class="muted">Hood Work Light</small><br><a href="https://www.amazon.com/dp/B0DXTS27G3" target="_blank" class="asin-link">B0DXTS27G3</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 ACL<br><small class="muted">US 법인</small><br><strong>0</strong></td>
+          <td class="td-mkt" data-market="CA">CA<br><small>FBA</small></td>
           <td class="r td-stock" data-market="CA">0</td>
           <td class="td-dos" data-market="CA" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>50/월</small></td>
           <td class="td-dos" data-market="CA" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>ACL포함 0</small></td>
           <td class="td-due" data-market="CA"><span style="color:#94a3b8">—</span></td>
-          <td class="td-due" data-market="CA"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-03-23</span></td>
+          <td class="td-due" data-market="CA"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-03-24</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0007">
-          <td rowspan="2" class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>1,500</strong></td>
-          <td class="td-mkt" data-market="UK">🇬🇧<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0007</strong><br><small class="muted">Hood Work Light</small><br><a href="https://www.amazon.com/dp/B0DXTS27G3" target="_blank" class="asin-link">B0DXTS27G3</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>1,500</strong></td>
+          <td class="td-mkt" data-market="UK">UK<br><small>FBA</small></td>
           <td class="r td-stock" data-market="UK">0</td>
           <td class="td-dos" data-market="UK" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>0/월</small></td>
           <td class="td-dos" data-market="UK" style="background:#f8fafc;color:#94a3b8"><span style="color:#94a3b8">—</span><br><small>ILS포함 1,500</small></td>
@@ -468,12 +437,13 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
           <td class="td-due" data-market="UK"><span style="color:#94a3b8">—</span></td>
         </tr>
         <tr class="inv-row" data-code="GE0007">
-          <td class="td-mkt" data-market="DE">🇩🇪<br><small>FBA</small></td>
+          <td class="td-product inv-dup"><strong>GE0007</strong><br><small class="muted">Hood Work Light</small><br><a href="https://www.amazon.com/dp/B0DXTS27G3" target="_blank" class="asin-link">B0DXTS27G3</a></td><td class="r td-stock num-cn inv-dup">0</td><td class="r td-stock num-kr inv-dup">0</td><td class="r td-wh">🏭 PL ILS<br><small class="muted">유럽 창고</small><br><strong>1,500</strong></td>
+          <td class="td-mkt" data-market="DE">DE<br><small>FBA</small></td>
           <td class="r td-stock" data-market="DE">0</td>
           <td class="td-dos" data-market="DE" style="background:#fee2e2;color:#dc2626"><span style="color:#dc2626;font-weight:700">🔴 0일</span><br><small>35/월</small></td>
           <td class="td-dos" data-market="DE" style="background:#f0fdf4;color:#16a34a"><span style="color:#16a34a;font-weight:700">🟢 1286일</span><br><small>ILS포함 1,500</small></td>
-          <td class="td-due" data-market="DE"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-27</span></td>
-          <td class="td-due" data-market="DE"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2029-09-22</span></td>
+          <td class="td-due" data-market="DE"><span class="chip" style="background:#fee2e2;color:#dc2626;border:1px solid #dc2626">2026-04-28</span></td>
+          <td class="td-due" data-market="DE"><span class="chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #16a34a">2029-09-23</span></td>
         </tr>
         <tr class="inv-sep"><td colspan="10"></td></tr>
   </tbody>
@@ -503,7 +473,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
     <th class="r">리드타임<br><small style="font-weight:400">닝보→아마존</small></th>
   </tr>
   </thead>
-  <tbody id="logBody"><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">1</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80788309</td><td class="r">100</td><td>🇺🇸</td><td style="font-size:11px">LCL</td><td>2023-02-21</td><td>2023-05-02</td><td>2023-05-12</td><td>2023-05-22</td><td>2023-06-01</td><td>2023-07-07</td><td class="r bold"><strong>66일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">2</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80799017</td><td class="r">300</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2023-04-28</td><td>2023-05-26</td><td>2023-06-08</td><td>2023-06-19</td><td>2023-07-02</td><td>2023-08-03</td><td class="r bold"><strong>69일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">3</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80821702</td><td class="r">100</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2023-07-26</td><td>2023-08-15</td><td>2023-07-26</td><td>2023-08-03</td><td>2023-08-10</td><td>2023-09-08</td><td class="r bold"><strong>24일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">4</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80838900</td><td class="r">400</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2023-07-26</td><td>2023-08-15</td><td>2023-08-24</td><td>2023-09-17</td><td>2023-09-30</td><td>2023-10-28</td><td class="r bold"><strong>74일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">5</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80846196</td><td class="r">1,000</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2023-08-13</td><td>2023-09-15</td><td>2023-09-20</td><td>2023-10-03</td><td>2023-10-20</td><td>2023-11-20</td><td class="r bold"><strong>66일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">6</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80855448</td><td class="r">4,800</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2023-08-31</td><td>2023-09-28</td><td>2023-10-10</td><td>2023-10-30</td><td>2023-11-14</td><td>2023-12-22</td><td class="r bold"><strong>85일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">7</td><td><strong>GE0001</strong></td><td style="font-size:11px">DC2400007</td><td class="r">1,000</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2023-12-04</td><td>2024-01-19</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-02-04</td><td>2024-03-04</td><td class="r bold"><strong>45일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">8</td><td><strong>GE0001</strong></td><td style="font-size:11px">DC2400090</td><td class="r">1,000</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-04-05</td><td>2024-05-12</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-06-02</td><td>2024-07-02</td><td class="r bold"><strong>51일</strong></td></tr><tr data-code="GE0002" data-market="US"><td style="color:#64748b;font-size:11px">9</td><td><strong>GE0002</strong></td><td style="font-size:11px">DC2400090</td><td class="r">1,000</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-04-05</td><td>2024-05-12</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-06-02</td><td>2024-07-02</td><td class="r bold"><strong>51일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">10</td><td><strong>GE0001</strong></td><td style="font-size:11px">20240001N</td><td class="r">3,000</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-04-12</td><td>2024-05-30</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-06-24</td><td>2024-07-17</td><td class="r bold"><strong>48일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">11</td><td><strong>GE0001</strong></td><td style="font-size:11px">20240002N</td><td class="r">6,000</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-04-26</td><td>2024-06-28</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-07-23</td><td>2024-08-09</td><td class="r bold"><strong>42일</strong></td></tr><tr data-code="GE0001" data-market="UK"><td style="color:#64748b;font-size:11px">12</td><td><strong>GE0001</strong></td><td style="font-size:11px">D24-81001951</td><td class="r">500</td><td>🇬🇧</td><td style="font-size:11px">FCL</td><td>2024-07-18</td><td>2024-08-10</td><td>2024-08-19</td><td>2024-09-05</td><td>2024-11-04</td><td>2024-12-10</td><td class="r bold"><strong>122일</strong></td></tr><tr data-code="GE0004" data-market="US"><td style="color:#64748b;font-size:11px">13</td><td><strong>GE0004</strong></td><td style="font-size:11px">20240003N</td><td class="r">2,000</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-05-29</td><td>2024-08-10</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-08-23</td><td>2024-10-22</td><td class="r bold"><strong>73일</strong></td></tr><tr data-code="GE0002" data-market="US"><td style="color:#64748b;font-size:11px">14</td><td><strong>GE0002</strong></td><td style="font-size:11px">20240004N</td><td class="r">1,920</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-06-27</td><td>2024-09-19</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-10-02</td><td>2024-11-07</td><td class="r bold"><strong>49일</strong></td></tr><tr data-code="GE0003" data-market="US"><td style="color:#64748b;font-size:11px">15</td><td><strong>GE0003</strong></td><td style="font-size:11px">20240005N</td><td class="r">2,016</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-06-24</td><td>2024-09-19</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-10-02</td><td>2024-11-07</td><td class="r bold"><strong>49일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">16</td><td><strong>GE0001</strong></td><td style="font-size:11px">20240006N</td><td class="r">7,200</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-08-13</td><td>2024-09-29</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-10-15</td><td>2024-11-18</td><td class="r bold"><strong>50일</strong></td></tr><tr data-code="GE0002" data-market="UK"><td style="color:#64748b;font-size:11px">17</td><td><strong>GE0002</strong></td><td style="font-size:11px">D25-81092074</td><td class="r">240</td><td>🇬🇧</td><td style="font-size:11px">FCL</td><td>2024-12-09</td><td>2024-12-26</td><td>2025-01-14</td><td>2025-03-09</td><td>2025-04-28</td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">18</td><td><strong>GE0001</strong></td><td style="font-size:11px">20250001N</td><td class="r">4,320</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-12-26</td><td>2025-03-15</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-03-28</td><td>2025-04-30</td><td class="r bold"><strong>46일</strong></td></tr><tr data-code="GE0002" data-market="US"><td style="color:#64748b;font-size:11px">19</td><td><strong>GE0002</strong></td><td style="font-size:11px">20250001N</td><td class="r">960</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-12-26</td><td>2025-03-15</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-03-28</td><td>2025-04-30</td><td class="r bold"><strong>46일</strong></td></tr><tr data-code="GE0001" data-market="EU"><td style="color:#64748b;font-size:11px">20</td><td><strong>GE0001</strong></td><td style="font-size:11px">20250001E</td><td class="r">6,000</td><td>🇪🇺</td><td style="font-size:11px">FCL</td><td>2024-12-09</td><td>2025-03-16</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-05-22</td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0002" data-market="EU"><td style="color:#64748b;font-size:11px">21</td><td><strong>GE0002</strong></td><td style="font-size:11px">20250001E</td><td class="r">1,500</td><td>🇪🇺</td><td style="font-size:11px">FCL</td><td>2025-01-22</td><td>2025-03-16</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-05-22</td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">22</td><td><strong>GE0001</strong></td><td style="font-size:11px">20250002N</td><td class="r">7,200</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-12-11</td><td>2025-04-08</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-04-23</td><td>2025-05-28</td><td class="r bold"><strong>50일</strong></td></tr><tr data-code="GE0002" data-market="US"><td style="color:#64748b;font-size:11px">23</td><td><strong>GE0002</strong></td><td style="font-size:11px">20250002N</td><td class="r">1,320</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2024-12-11</td><td>2025-04-08</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-04-23</td><td>2025-05-28</td><td class="r bold"><strong>50일</strong></td></tr><tr data-code="GE0005" data-market="EU"><td style="color:#64748b;font-size:11px">24</td><td><strong>GE0005</strong></td><td style="font-size:11px">D25-81150443</td><td class="r">2,500</td><td>🇪🇺</td><td style="font-size:11px">FCL</td><td>2025-04-04</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-07-01</td><td>2025-08-25</td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0007" data-market="EU"><td style="color:#64748b;font-size:11px">25</td><td><strong>GE0007</strong></td><td style="font-size:11px">D25-81150443</td><td class="r">2,000</td><td>🇪🇺</td><td style="font-size:11px">FCL</td><td>2025-04-04</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-07-01</td><td>2025-08-25</td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">26</td><td><strong>GE0001</strong></td><td style="font-size:11px">D25-81160262</td><td class="r">3,000</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2025-06-24</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-07-14</td><td>2025-08-31</td><td>2025-09-29</td><td class="r bold"><strong>101일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">27</td><td><strong>GE0001</strong></td><td style="font-size:11px">D25-81178246</td><td class="r">7,560</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2025-04-04</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-08-20</td><td>2025-08-31</td><td>2025-09-29</td><td class="r bold"><strong>101일</strong></td></tr><tr data-code="GE0001" data-market="CA"><td style="color:#64748b;font-size:11px">28</td><td><strong>GE0001</strong></td><td style="font-size:11px">D25-81183175</td><td class="r">3,000</td><td>🇨🇦</td><td style="font-size:11px">FCL</td><td>2025-06-24</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-08-26</td><td>2025-08-31</td><td>2025-09-29</td><td class="r bold"><strong>101일</strong></td></tr><tr data-code="GE0005" data-market="CA"><td style="color:#64748b;font-size:11px">29</td><td><strong>GE0005</strong></td><td style="font-size:11px">D25-81183175</td><td class="r">500</td><td>🇨🇦</td><td style="font-size:11px">FCL</td><td>2025-04-04</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-08-26</td><td>2025-08-31</td><td>2025-09-29</td><td class="r bold"><strong>101일</strong></td></tr><tr data-code="GE0006" data-market="CA"><td style="color:#64748b;font-size:11px">30</td><td><strong>GE0006</strong></td><td style="font-size:11px">D25-81183175</td><td class="r">312</td><td>🇨🇦</td><td style="font-size:11px">FCL</td><td>2025-04-04</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-08-26</td><td>2025-08-31</td><td>2025-09-29</td><td class="r bold"><strong>101일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">31</td><td><strong>GE0001</strong></td><td style="font-size:11px">D25-81216129</td><td class="r">7,560</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2025-08-19</td><td>2025-09-25</td><td>2025-10-02</td><td>2025-11-08</td><td>2025-11-22</td><td>2025-12-22</td><td class="r bold"><strong>88일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">32</td><td><strong>GE0001</strong></td><td style="font-size:11px"></td><td class="r">7,560</td><td>🇺🇸</td><td style="font-size:11px">FCL</td><td>2025-10-17</td><td>2025-11-27</td><td>2025-12-01</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0005" data-market="CA"><td style="color:#64748b;font-size:11px">33</td><td><strong>GE0005</strong></td><td style="font-size:11px"></td><td class="r">3,000</td><td>🇨🇦</td><td style="font-size:11px">LCL</td><td>2025-10-31</td><td>2026-01-30</td><td>2026-02-09</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr></tbody>
+  <tbody id="logBody"><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">1</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80788309</td><td class="r">100</td><td>US</td><td style="font-size:11px">LCL</td><td>2023-02-21</td><td>2023-05-02</td><td>2023-05-12</td><td>2023-05-22</td><td>2023-06-01</td><td>2023-07-07</td><td class="r bold"><strong>66일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">2</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80799017</td><td class="r">300</td><td>US</td><td style="font-size:11px">FCL</td><td>2023-04-28</td><td>2023-05-26</td><td>2023-06-08</td><td>2023-06-19</td><td>2023-07-02</td><td>2023-08-03</td><td class="r bold"><strong>69일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">3</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80821702</td><td class="r">100</td><td>US</td><td style="font-size:11px">FCL</td><td>2023-07-26</td><td>2023-08-15</td><td>2023-07-26</td><td>2023-08-03</td><td>2023-08-10</td><td>2023-09-08</td><td class="r bold"><strong>24일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">4</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80838900</td><td class="r">400</td><td>US</td><td style="font-size:11px">FCL</td><td>2023-07-26</td><td>2023-08-15</td><td>2023-08-24</td><td>2023-09-17</td><td>2023-09-30</td><td>2023-10-28</td><td class="r bold"><strong>74일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">5</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80846196</td><td class="r">1,000</td><td>US</td><td style="font-size:11px">FCL</td><td>2023-08-13</td><td>2023-09-15</td><td>2023-09-20</td><td>2023-10-03</td><td>2023-10-20</td><td>2023-11-20</td><td class="r bold"><strong>66일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">6</td><td><strong>GE0001</strong></td><td style="font-size:11px">D23-80855448</td><td class="r">4,800</td><td>US</td><td style="font-size:11px">FCL</td><td>2023-08-31</td><td>2023-09-28</td><td>2023-10-10</td><td>2023-10-30</td><td>2023-11-14</td><td>2023-12-22</td><td class="r bold"><strong>85일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">7</td><td><strong>GE0001</strong></td><td style="font-size:11px">DC2400007</td><td class="r">1,000</td><td>US</td><td style="font-size:11px">FCL</td><td>2023-12-04</td><td>2024-01-19</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-02-04</td><td>2024-03-04</td><td class="r bold"><strong>45일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">8</td><td><strong>GE0001</strong></td><td style="font-size:11px">DC2400090</td><td class="r">1,000</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-04-05</td><td>2024-05-12</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-06-02</td><td>2024-07-02</td><td class="r bold"><strong>51일</strong></td></tr><tr data-code="GE0002" data-market="US"><td style="color:#64748b;font-size:11px">9</td><td><strong>GE0002</strong></td><td style="font-size:11px">DC2400090</td><td class="r">1,000</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-04-05</td><td>2024-05-12</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-06-02</td><td>2024-07-02</td><td class="r bold"><strong>51일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">10</td><td><strong>GE0001</strong></td><td style="font-size:11px">20240001N</td><td class="r">3,000</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-04-12</td><td>2024-05-30</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-06-24</td><td>2024-07-17</td><td class="r bold"><strong>48일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">11</td><td><strong>GE0001</strong></td><td style="font-size:11px">20240002N</td><td class="r">6,000</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-04-26</td><td>2024-06-28</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-07-23</td><td>2024-08-09</td><td class="r bold"><strong>42일</strong></td></tr><tr data-code="GE0001" data-market="UK"><td style="color:#64748b;font-size:11px">12</td><td><strong>GE0001</strong></td><td style="font-size:11px">D24-81001951</td><td class="r">500</td><td>UK</td><td style="font-size:11px">FCL</td><td>2024-07-18</td><td>2024-08-10</td><td>2024-08-19</td><td>2024-09-05</td><td>2024-11-04</td><td>2024-12-10</td><td class="r bold"><strong>122일</strong></td></tr><tr data-code="GE0004" data-market="US"><td style="color:#64748b;font-size:11px">13</td><td><strong>GE0004</strong></td><td style="font-size:11px">20240003N</td><td class="r">2,000</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-05-29</td><td>2024-08-10</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-08-23</td><td>2024-10-22</td><td class="r bold"><strong>73일</strong></td></tr><tr data-code="GE0002" data-market="US"><td style="color:#64748b;font-size:11px">14</td><td><strong>GE0002</strong></td><td style="font-size:11px">20240004N</td><td class="r">1,920</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-06-27</td><td>2024-09-19</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-10-02</td><td>2024-11-07</td><td class="r bold"><strong>49일</strong></td></tr><tr data-code="GE0003" data-market="US"><td style="color:#64748b;font-size:11px">15</td><td><strong>GE0003</strong></td><td style="font-size:11px">20240005N</td><td class="r">2,016</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-06-24</td><td>2024-09-19</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-10-02</td><td>2024-11-07</td><td class="r bold"><strong>49일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">16</td><td><strong>GE0001</strong></td><td style="font-size:11px">20240006N</td><td class="r">7,200</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-08-13</td><td>2024-09-29</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2024-10-15</td><td>2024-11-18</td><td class="r bold"><strong>50일</strong></td></tr><tr data-code="GE0002" data-market="UK"><td style="color:#64748b;font-size:11px">17</td><td><strong>GE0002</strong></td><td style="font-size:11px">D25-81092074</td><td class="r">240</td><td>UK</td><td style="font-size:11px">FCL</td><td>2024-12-09</td><td>2024-12-26</td><td>2025-01-14</td><td>2025-03-09</td><td>2025-04-28</td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">18</td><td><strong>GE0001</strong></td><td style="font-size:11px">20250001N</td><td class="r">4,320</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-12-26</td><td>2025-03-15</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-03-28</td><td>2025-04-30</td><td class="r bold"><strong>46일</strong></td></tr><tr data-code="GE0002" data-market="US"><td style="color:#64748b;font-size:11px">19</td><td><strong>GE0002</strong></td><td style="font-size:11px">20250001N</td><td class="r">960</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-12-26</td><td>2025-03-15</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-03-28</td><td>2025-04-30</td><td class="r bold"><strong>46일</strong></td></tr><tr data-code="GE0001" data-market="EU"><td style="color:#64748b;font-size:11px">20</td><td><strong>GE0001</strong></td><td style="font-size:11px">20250001E</td><td class="r">6,000</td><td>EU</td><td style="font-size:11px">FCL</td><td>2024-12-09</td><td>2025-03-16</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-05-22</td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0002" data-market="EU"><td style="color:#64748b;font-size:11px">21</td><td><strong>GE0002</strong></td><td style="font-size:11px">20250001E</td><td class="r">1,500</td><td>EU</td><td style="font-size:11px">FCL</td><td>2025-01-22</td><td>2025-03-16</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-05-22</td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">22</td><td><strong>GE0001</strong></td><td style="font-size:11px">20250002N</td><td class="r">7,200</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-12-11</td><td>2025-04-08</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-04-23</td><td>2025-05-28</td><td class="r bold"><strong>50일</strong></td></tr><tr data-code="GE0002" data-market="US"><td style="color:#64748b;font-size:11px">23</td><td><strong>GE0002</strong></td><td style="font-size:11px">20250002N</td><td class="r">1,320</td><td>US</td><td style="font-size:11px">FCL</td><td>2024-12-11</td><td>2025-04-08</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td>2025-04-23</td><td>2025-05-28</td><td class="r bold"><strong>50일</strong></td></tr><tr data-code="GE0005" data-market="EU"><td style="color:#64748b;font-size:11px">24</td><td><strong>GE0005</strong></td><td style="font-size:11px">D25-81150443</td><td class="r">2,500</td><td>EU</td><td style="font-size:11px">FCL</td><td>2025-04-04</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-07-01</td><td>2025-08-25</td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0007" data-market="EU"><td style="color:#64748b;font-size:11px">25</td><td><strong>GE0007</strong></td><td style="font-size:11px">D25-81150443</td><td class="r">2,000</td><td>EU</td><td style="font-size:11px">FCL</td><td>2025-04-04</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-07-01</td><td>2025-08-25</td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">26</td><td><strong>GE0001</strong></td><td style="font-size:11px">D25-81160262</td><td class="r">3,000</td><td>US</td><td style="font-size:11px">FCL</td><td>2025-06-24</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-07-14</td><td>2025-08-31</td><td>2025-09-29</td><td class="r bold"><strong>101일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">27</td><td><strong>GE0001</strong></td><td style="font-size:11px">D25-81178246</td><td class="r">7,560</td><td>US</td><td style="font-size:11px">FCL</td><td>2025-04-04</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-08-20</td><td>2025-08-31</td><td>2025-09-29</td><td class="r bold"><strong>101일</strong></td></tr><tr data-code="GE0001" data-market="CA"><td style="color:#64748b;font-size:11px">28</td><td><strong>GE0001</strong></td><td style="font-size:11px">D25-81183175</td><td class="r">3,000</td><td>CA</td><td style="font-size:11px">FCL</td><td>2025-06-24</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-08-26</td><td>2025-08-31</td><td>2025-09-29</td><td class="r bold"><strong>101일</strong></td></tr><tr data-code="GE0005" data-market="CA"><td style="color:#64748b;font-size:11px">29</td><td><strong>GE0005</strong></td><td style="font-size:11px">D25-81183175</td><td class="r">500</td><td>CA</td><td style="font-size:11px">FCL</td><td>2025-04-04</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-08-26</td><td>2025-08-31</td><td>2025-09-29</td><td class="r bold"><strong>101일</strong></td></tr><tr data-code="GE0006" data-market="CA"><td style="color:#64748b;font-size:11px">30</td><td><strong>GE0006</strong></td><td style="font-size:11px">D25-81183175</td><td class="r">312</td><td>CA</td><td style="font-size:11px">FCL</td><td>2025-04-04</td><td>2025-06-20</td><td>2025-07-02</td><td>2025-08-26</td><td>2025-08-31</td><td>2025-09-29</td><td class="r bold"><strong>101일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">31</td><td><strong>GE0001</strong></td><td style="font-size:11px">D25-81216129</td><td class="r">7,560</td><td>US</td><td style="font-size:11px">FCL</td><td>2025-08-19</td><td>2025-09-25</td><td>2025-10-02</td><td>2025-11-08</td><td>2025-11-22</td><td>2025-12-22</td><td class="r bold"><strong>88일</strong></td></tr><tr data-code="GE0001" data-market="US"><td style="color:#64748b;font-size:11px">32</td><td><strong>GE0001</strong></td><td style="font-size:11px"></td><td class="r">7,560</td><td>US</td><td style="font-size:11px">FCL</td><td>2025-10-17</td><td>2025-11-27</td><td>2025-12-01</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr><tr data-code="GE0005" data-market="CA"><td style="color:#64748b;font-size:11px">33</td><td><strong>GE0005</strong></td><td style="font-size:11px"></td><td class="r">3,000</td><td>CA</td><td style="font-size:11px">LCL</td><td>2025-10-31</td><td>2026-01-30</td><td>2026-02-09</td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#94a3b8">—</span></td><td><span style="color:#f59e0b">진행중/미기록</span></td><td class="r bold"><span style="color:#94a3b8">—</span></td></tr></tbody>
   </table>
   <p style="margin-top:8px;font-size:11px;color:var(--mu)">
     ※ 아마존 ETA 공란 = 진행중(도착 후 입력 필요) | 리드타임 = 닝보 출발일 기준
@@ -557,7 +527,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
   </thead>
   <tbody id="tariffBody"><tr data-code="GE0001" data-market="US">
               <td><strong>GE0001</strong><br><small class="muted">Tire Repair Kit</small></td>
-              <td>🇺🇸</td>
+              <td>US</td>
               <td class="muted-txt">2025-09</td>
               <td class="r">5.24%</td>
               <td class="r">18.86%</td>
@@ -567,7 +537,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
               <td class="r bold">$4.84</td>
             </tr><tr data-code="GE0001" data-market="CA">
               <td><strong>GE0001</strong><br><small class="muted">Tire Repair Kit</small></td>
-              <td>🇨🇦</td>
+              <td>CA</td>
               <td class="muted-txt">2025-08</td>
               <td class="r">6.5%</td>
               <td class="r">0.0%</td>
@@ -577,7 +547,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
               <td class="r bold">$0.79</td>
             </tr><tr data-code="GE0001" data-market="EU">
               <td><strong>GE0001</strong><br><small class="muted">Tire Repair Kit</small></td>
-              <td>🇪🇺</td>
+              <td>EU</td>
               <td class="muted-txt">2025-03</td>
               <td class="r">3.7%</td>
               <td class="r muted-txt">—</td>
@@ -587,7 +557,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
               <td class="r bold">$0.317</td>
             </tr><tr data-code="GE0002" data-market="US">
               <td><strong>GE0002</strong><br><small class="muted">Mechanics Mat</small></td>
-              <td>🇺🇸</td>
+              <td>US</td>
               <td class="muted-txt">2025-04</td>
               <td class="r">7.3%</td>
               <td class="r">0.0%</td>
@@ -597,7 +567,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
               <td class="r bold">$4.78</td>
             </tr><tr data-code="GE0002" data-market="EU">
               <td><strong>GE0002</strong><br><small class="muted">Mechanics Mat</small></td>
-              <td>🇪🇺</td>
+              <td>EU</td>
               <td class="muted-txt">2025-03</td>
               <td class="r">3.7%</td>
               <td class="r muted-txt">—</td>
@@ -607,7 +577,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
               <td class="r bold">$0.331</td>
             </tr><tr data-code="GE0003" data-market="US">
               <td><strong>GE0003</strong><br><small class="muted">Mirror Set</small></td>
-              <td>🇺🇸</td>
+              <td>US</td>
               <td class="muted-txt">2024-09</td>
               <td class="r">3.7%</td>
               <td class="r">25.0%</td>
@@ -617,7 +587,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
               <td class="r bold">$2.30</td>
             </tr><tr data-code="GE0004" data-market="US">
               <td><strong>GE0004</strong><br><small class="muted">Stool</small></td>
-              <td>🇺🇸</td>
+              <td>US</td>
               <td class="muted-txt">2024-10</td>
               <td class="r">0.0%</td>
               <td class="r">25.0%</td>
@@ -627,7 +597,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
               <td class="r bold">$5.88</td>
             </tr><tr data-code="GE0005" data-market="CA">
               <td><strong>GE0005</strong><br><small class="muted">Mini Torch Light</small></td>
-              <td>🇨🇦</td>
+              <td>CA</td>
               <td class="muted-txt">2025-08</td>
               <td class="r">0.0%</td>
               <td class="r">0.0%</td>
@@ -637,7 +607,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
               <td class="r bold">$0.00</td>
             </tr><tr data-code="GE0005" data-market="EU">
               <td><strong>GE0005</strong><br><small class="muted">Mini Torch Light</small></td>
-              <td>🇪🇺</td>
+              <td>EU</td>
               <td class="muted-txt">2025-07</td>
               <td class="r">5.7%</td>
               <td class="r muted-txt">—</td>
@@ -647,7 +617,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
               <td class="r bold">$0.311</td>
             </tr><tr data-code="GE0006" data-market="CA">
               <td><strong>GE0006</strong><br><small class="muted">Socket Organizer</small></td>
-              <td>🇨🇦</td>
+              <td>CA</td>
               <td class="muted-txt">2025-08</td>
               <td class="r">6.5%</td>
               <td class="r">0.0%</td>
@@ -657,7 +627,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
               <td class="r bold">$0.56</td>
             </tr><tr data-code="GE0007" data-market="EU">
               <td><strong>GE0007</strong><br><small class="muted">Hood Work Light</small></td>
-              <td>🇪🇺</td>
+              <td>EU</td>
               <td class="muted-txt">2025-07</td>
               <td class="r">5.7%</td>
               <td class="r muted-txt">—</td>
@@ -685,7 +655,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
   <div class="route-grid">
 
     <div class="route-item">
-      <div class="r-dest">🇺🇸<br>US</div>
+      <div class="r-dest">🇺🇸 US</div>
       <div class="r-nodes">
         <div class="r-node"><div class="n-box">🇨🇳 중국</div><div class="n-sub">닝보</div></div>
         <div class="r-arrow"><div class="a-line"></div><div class="a-days">직송</div></div>
@@ -695,7 +665,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
     </div>
 
     <div class="route-item">
-      <div class="r-dest">🇺🇸<br>US</div>
+      <div class="r-dest">🇺🇸 US</div>
       <div class="r-nodes">
         <div class="r-node"><div class="n-box">🇨🇳 중국</div><div class="n-sub">닝보</div></div>
         <div class="r-arrow"><div class="a-line"></div><div class="a-days">~18일</div></div>
@@ -707,7 +677,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
     </div>
 
     <div class="route-item">
-      <div class="r-dest">🇺🇸<br>US</div>
+      <div class="r-dest">🇺🇸 US</div>
       <div class="r-nodes">
         <div class="r-node"><div class="n-box">🇨🇳 중국</div><div class="n-sub">닝보</div></div>
         <div class="r-arrow"><div class="a-line"></div><div class="a-days">~8일</div></div>
@@ -721,7 +691,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
     </div>
 
     <div class="route-item">
-      <div class="r-dest">🇨🇦<br>CA</div>
+      <div class="r-dest">🇨🇦 CA</div>
       <div class="r-nodes">
         <div class="r-node"><div class="n-box">🇨🇳 중국</div></div>
         <div class="r-arrow"><div class="a-line"></div><div class="a-days">직송</div></div>
@@ -731,7 +701,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
     </div>
 
     <div class="route-item">
-      <div class="r-dest">🇨🇦<br>CA</div>
+      <div class="r-dest">🇨🇦 CA</div>
       <div class="r-nodes">
         <div class="r-node"><div class="n-box">🇨🇳 중국</div></div>
         <div class="r-arrow"><div class="a-line"></div></div>
@@ -743,7 +713,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
     </div>
 
     <div class="route-item">
-      <div class="r-dest">🇬🇧🇩🇪<br>EU</div>
+      <div class="r-dest">UK/DE</div>
       <div class="r-nodes">
         <div class="r-node"><div class="n-box">🇨🇳 중국</div></div>
         <div class="r-arrow"><div class="a-line"></div><div class="a-days">~30일</div></div>
@@ -755,7 +725,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
     </div>
 
     <div class="route-item">
-      <div class="r-dest">🇬🇧🇩🇪<br>EU</div>
+      <div class="r-dest">UK/DE</div>
       <div class="r-nodes">
         <div class="r-node"><div class="n-box">🇨🇳 중국</div></div>
         <div class="r-arrow"><div class="a-line"></div></div>
@@ -776,7 +746,7 @@ td{padding:7px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
 <div id="t5" class="tab-pane">
   <div class="sec">🔍 데이터 검증 &amp; 품질 체크</div>
   <div class="card">
-    <div class="val-row" style="background:#f0fdf4;border-left:3px solid #86efac">✅ 재고 데이터 최신 (2026-05-12)</div><div class="val-row" style="background:#fef3c7;border-left:3px solid #fcd34d">⚠️ 아마존 ETA 미기록: 7건 (닝보 ETD는 있음, 완료 후 입력 필요)</div><div class="val-row" style="background:#eff6ff;border-left:3px solid #93c5fd">ℹ️ 전체 발주 건: 33건 | ETD+ETA 완전 기록: 26건</div><div class="val-row" style="background:#fef3c7;border-left:3px solid #fcd34d">⚠️ US 최신 관세 데이터 250일 경과 (2025-09, GE0001)</div><div class="val-row" style="background:#f0fdf4;border-left:3px solid #86efac">✅ 모든 활성 상품에 예상 판매량 데이터 존재</div><div class="val-row" style="background:#fef3c7;border-left:3px solid #fcd34d">⚠️ 2025년 이후 아마존 ETA 미기록: 6건 — 도착 후 입력 필요</div><div class="val-row" style="background:#f0fdf4;border-left:3px solid #86efac">✅ 교차검증 이상 없음 — BI Total Q'ty ↔ 위치별 합계 일치</div><div class="val-row" style="background:#eff6ff;border-left:3px solid #93c5fd">ℹ️ 관세 On Board 기준: 중계무역(한국 경유) 건은 영산 ETA(한국 선적일) 기준으로 기록됨</div>
+    <div class="val-row" style="background:#f0fdf4;border-left:3px solid #86efac">✅ 재고 데이터 최신 (2026-05-12)</div><div class="val-row" style="background:#fef3c7;border-left:3px solid #fcd34d">⚠️ 아마존 ETA 미기록: 7건 (닝보 ETD는 있음, 완료 후 입력 필요)</div><div class="val-row" style="background:#eff6ff;border-left:3px solid #93c5fd">ℹ️ 전체 발주 건: 33건 | ETD+ETA 완전 기록: 26건</div><div class="val-row" style="background:#fef3c7;border-left:3px solid #fcd34d">⚠️ US 최신 관세 데이터 251일 경과 (2025-09, GE0001)</div><div class="val-row" style="background:#f0fdf4;border-left:3px solid #86efac">✅ 모든 활성 상품에 예상 판매량 데이터 존재</div><div class="val-row" style="background:#fef3c7;border-left:3px solid #fcd34d">⚠️ 2025년 이후 아마존 ETA 미기록: 6건 — 도착 후 입력 필요</div><div class="val-row" style="background:#f0fdf4;border-left:3px solid #86efac">✅ 교차검증 이상 없음 — BI Total Q'ty ↔ 위치별 합계 일치</div><div class="val-row" style="background:#eff6ff;border-left:3px solid #93c5fd">ℹ️ 관세 On Board 기준: 중계무역(한국 경유) 건은 영산 ETA(한국 선적일) 기준으로 기록됨</div>
   </div>
 </div>
 
@@ -808,7 +778,9 @@ function toggleFilter(el) {
 
 function visible(code, market) {
   const codeOk   = filterCode   === "ALL" || filterCode   === code;
-  const marketOk = filterMarket === "ALL" || filterMarket === market;
+  // UK·DE 선택 시 EU 발주 건도 함께 표시 (EU 창고 → UK/DE FBA 경로)
+  const marketOk = filterMarket === "ALL" || filterMarket === market
+    || (market === "EU" && (filterMarket === "UK" || filterMarket === "DE"));
   return codeOk && marketOk;
 }
 
@@ -823,38 +795,18 @@ function applyFilters() {
     cell.style.pointerEvents = ok ? "" : "none";
   });
 
-  // 재고 테이블
-  const rows = document.querySelectorAll("#invBody tr");
-  let i = 0;
-  while (i < rows.length) {
-    const row = rows[i];
-    if (row.classList.contains("inv-sep")) { i++; continue; }
+  // 재고 테이블 (각 행 독립 구조 - rowspan 없음)
+  const invBody = document.getElementById("invBody");
+  invBody.className = (filterMarket !== "ALL") ? "mkt-filtered" : "";
+  document.querySelectorAll("#invBody tr").forEach(row => {
+    if (row.classList.contains("inv-sep")) { row.style.display = ""; return; }
     const code = row.dataset.code;
     const codeOk = filterCode === "ALL" || filterCode === code;
-    let j = i;
-    const group = [];
-    while (j < rows.length && !rows[j].classList.contains("inv-sep")) { group.push(rows[j]); j++; }
-    if (rows[j] && rows[j].classList.contains("inv-sep")) group.push(rows[j]);
-    if (!codeOk) {
-      group.forEach(r => r.style.display = "none");
-    } else {
-      group.forEach(r => {
-        if (r.classList.contains("inv-sep")) { r.style.display = ""; return; }
-        const mkts = [...r.querySelectorAll("[data-market]")].map(m => m.dataset.market);
-        const mkt = mkts.find(m => m);
-        if (mkt) {
-          r.style.display = (filterMarket === "ALL" || filterMarket === mkt) ? "" : "none";
-        } else {
-          const anyVisible = group.filter(gr => {
-            const m2 = [...gr.querySelectorAll("[data-market]")].map(x => x.dataset.market).find(x=>x);
-            return m2 && (filterMarket === "ALL" || filterMarket === m2) && gr.style.display !== "none";
-          }).length;
-          r.style.display = ""; // product/cn/kr rows always show if code matches
-        }
-      });
-    }
-    i = j + 1;
-  }
+    if (!codeOk) { row.style.display = "none"; return; }
+    const mkts = [...row.querySelectorAll("[data-market]")].map(m => m.dataset.market);
+    const mkt = mkts.find(m => m);
+    row.style.display = (!mkt || filterMarket === "ALL" || filterMarket === mkt) ? "" : "none";
+  });
 
   // 물류 이력
   document.querySelectorAll("#logBody tr").forEach(row => {
